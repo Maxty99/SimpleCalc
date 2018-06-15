@@ -68,8 +68,14 @@ public class MainActivity extends AppCompatActivity {
     public void Equal(View v){
         String text = mEdit.getText().toString().replace("×", "*").replace("÷", "/");
         Expression e = new ExpressionBuilder(text).build();
-        Double result = e.evaluate();
-        mEdit.setText(result.toString());
+        try {
+            Double result = e.evaluate();
+            mEdit.setText(result.toString());
+        }
+        catch (Exception ex){
+            mEdit.setText("Syntax Error");
+        }
+
 
     }
 
